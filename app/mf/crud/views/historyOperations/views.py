@@ -42,8 +42,8 @@ class HistoryOperationsView(LoginRequiredMixin, ValidatePermissionMixin, Templat
                             'action': i.description
                         }
                         data.append(history)
-            elif action == 'delete':
-                HistoryOperations.objects.all().delete()
+            # elif action == 'delete':
+            #     HistoryOperations.objects.all().delete()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
