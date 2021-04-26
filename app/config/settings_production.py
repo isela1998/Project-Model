@@ -25,10 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='u_csa(v2&ogqh!j9()jvut=b_o(2s+hhpmwyp&2y+zup8-&g#6')
+SECRET_KEY = 'u_csa(v2&ogqh!j9()jvut=b_o(2s+hhpmwyp&2y+zup8-&g#6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
+DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com"]
 
@@ -88,15 +88,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'db_model',
+#         'USER': 'master',
+#         'PASSWORD': 'M@ster/MF2021$*',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_model',
-        'USER': 'master',
-        'PASSWORD': 'M@ster/MF2021$*',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # Password validation
@@ -155,6 +161,3 @@ AUTH_USER_MODEL = 'user.User'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
-
-if config('DJANGO_PRODUCTION_ENV', default=False, cast=bool):
-    from .settings_production import *
