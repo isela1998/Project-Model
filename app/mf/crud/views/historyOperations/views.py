@@ -42,14 +42,6 @@ class HistoryOperationsView(LoginRequiredMixin, ValidatePermissionMixin, Templat
                             'action': i.description
                         }
                         data.append(history)
-            elif action == 'delete':
-                perms = ['delete_historyoperations', ]
-                group = request.user.groups.first()
-                authorized = ValidatePermissions(perms, group)
-                if(authorized == False):
-                    data['error'] = 'Disculpe, usted no tiene permisos para ejecutar esta acción'
-                elif(authorized == True):
-                    HistoryOperations.objects.all().delete()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
