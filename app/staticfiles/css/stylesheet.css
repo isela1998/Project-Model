@@ -532,6 +532,9 @@ input[name=salary] {
     .fas-dl {
         font-size: 16px;
     }
+    #searchBox{
+        width: 120px!important;
+    }
 }
 
 @media (max-width: 860px) {
@@ -547,6 +550,9 @@ input[name=salary] {
     .text-m2 {
         font-size: 14px;
     }
+    #searchBox{
+        width: 120px!important;
+    }
 }
 
 @media (max-width: 688px) {
@@ -555,6 +561,9 @@ input[name=salary] {
     }
     .text-m2 {
         display: none;
+    }
+    #searchBox{
+        width: 120px!important;
     }
 }
 
@@ -567,5 +576,8 @@ input[name=salary] {
     }
     .form-control-sede {
         width: 90px;
+    }
+    #searchBox{
+        width: 120px!important;
     }
 }
