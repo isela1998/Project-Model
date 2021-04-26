@@ -110,7 +110,7 @@ class ProductWarehouseListView(LoginRequiredMixin, ValidatePermissionMixin, Temp
                     image = ''
                     product = Product.objects.using(db).get(pk=request.POST['id'])
                     if not request.FILES:
-                        image = c.image
+                        image = p.image
                     else:
                         image = request.FILES['image']
 
