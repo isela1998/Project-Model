@@ -73,7 +73,7 @@ class BankAccountsView(LoginRequiredMixin, ValidatePermissionMixin, TemplateView
                     BankAccounts.objects.using('default').get(
                         pk=request.POST['id']).delete()
                     RegisterOperation(db, request.user.pk,
-                                      'Eliminó una cuenta bancaria.')
+                                      'Eliminó una cuenta bancaria..')
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
